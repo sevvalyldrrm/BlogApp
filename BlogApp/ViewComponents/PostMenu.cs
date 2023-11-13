@@ -1,5 +1,6 @@
 ﻿using BlogApp.Context;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.ViewComponents
 {
@@ -12,14 +13,14 @@ namespace BlogApp.ViewComponents
 			_context = context;
 		}
 
-		public IViewComponentResult Invoke()
+		public async Task<IViewComponentResult> InvokeAsync()
 		{
-			return View(
+			return View(await
 				_context
 				.Post
 				.OrderByDescending(p=> p.PublishedOn)
 				.Take(5)
-				.ToList()
+				.ToListAsync()
 			);
 		}
 

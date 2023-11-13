@@ -1,5 +1,6 @@
 ﻿using BlogApp.Context;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogApp.ViewComponents
 {
@@ -12,9 +13,9 @@ namespace BlogApp.ViewComponents
 			_context = context;
 		}
 
-		public IViewComponentResult Invoke()
+		public async Task<IViewComponentResult> InvokeAsync()
 		{
-			return View(_context.Tags.ToList());
+			return View(await _context.Tags.ToListAsync());
 		}
 	}
 }

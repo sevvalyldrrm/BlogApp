@@ -19,11 +19,11 @@ namespace BlogApp.Context
 				if (!context.Tags.Any())
 				{
 					context.Tags.AddRange(
-						new Tag { Text = "Web Programlama" },
-						new Tag { Text = "Backend" },
-						new Tag { Text = "Frontend" },
-						new Tag { Text = "Fullstack" },
-						new Tag { Text = "PHP" }
+						new Tag { Text = "Web Programlama", Url = "web-programlama" },
+						new Tag { Text = "Backend", Url = "backend" },
+						new Tag { Text = "Frontend", Url = "frontend" },
+						new Tag { Text = "Fullstack", Url = "fullstack" },
+						new Tag { Text = "PHP", Url = "php" }
 					);
 					context.SaveChanges();
 				}
@@ -44,6 +44,7 @@ namespace BlogApp.Context
 						{
 							Title = "Asp.net Core",
 							Content = "Asp.net Core dersleri",
+							Url = "aspnet-core",
 							IsActive = true,
 							PublishedOn = DateTime.Now.AddDays(-10),
 							Tags = context.Tags.Take(3).ToList(),
@@ -54,6 +55,7 @@ namespace BlogApp.Context
 						{
 							Title = "PHP",
 							Content = "PHP Core dersleri",
+							Url = "php-core",
 							IsActive = true,
 							PublishedOn = DateTime.Now.AddDays(-20),
 							Tags = context.Tags.Take(2).ToList(),
@@ -64,14 +66,48 @@ namespace BlogApp.Context
 						{
 							Title = "Django",
 							Content = "Django dersleri",
+							Url = "django",
 							IsActive = true,
-							PublishedOn = DateTime.Now.AddDays(-5),
+							PublishedOn = DateTime.Now.AddDays(-30),
+							Tags = context.Tags.Take(4).ToList(),
+							Image = "3.jpg",
+							UserId = 2
+						},
+						new Post
+						{
+							Title = "Angular",
+							Content = "Angular dersleri",
+							Url = "angular",
+							IsActive = true,
+							PublishedOn = DateTime.Now.AddDays(-40),
+							Tags = context.Tags.Take(4).ToList(),
+							Image = "3.jpg",
+							UserId = 2
+						},
+						new Post
+						{
+							Title = "React Js",
+							Content = "React dersleri",
+							Url = "react",
+							IsActive = true,
+							PublishedOn = DateTime.Now.AddDays(-50),
+							Tags = context.Tags.Take(4).ToList(),
+							Image = "3.jpg",
+							UserId = 2
+						},
+						new Post
+						{
+							Title = "Web Tasarım",
+							Content = "Web Tasarım dersleri",
+							Url = "web-tasarim",
+							IsActive = true,
+							PublishedOn = DateTime.Now.AddDays(-60),
 							Tags = context.Tags.Take(4).ToList(),
 							Image = "3.jpg",
 							UserId = 2
 						}
-					);
-					context.SaveChanges();
+				  );
+				context.SaveChanges();
 				}
 			}
 		}

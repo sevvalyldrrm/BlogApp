@@ -19,7 +19,7 @@ namespace BlogApp.Controllers
 				new PostViewModel
 				{
 					Posts = _context.Post.ToList(),
-					Tags = _context.Tags.ToList()
+					//Tags = _context.Tags.ToList()
 				}
 			);
 		}

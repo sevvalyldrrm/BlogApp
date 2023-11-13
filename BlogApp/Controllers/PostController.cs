@@ -1,4 +1,5 @@
 ﻿using BlogApp.Context;
+using BlogApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogApp.Controllers
@@ -14,7 +15,13 @@ namespace BlogApp.Controllers
 
 		public IActionResult Index()
 		{
-			return View(_context.Post.ToList());
+			return View(
+				new PostViewModel
+				{
+					Posts = _context.Post.ToList(),
+					Tags = _context.Tags.ToList()
+				}
+			);
 		}
 	}
 }

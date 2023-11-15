@@ -37,7 +37,7 @@ namespace BlogApp.Controllers
 
 		public async Task<IActionResult> Details(string url)
 		{
-			return View(await _context.Post.Include(x => x.Tags).FirstOrDefaultAsync(p => p.Url == url));
+			return View(await _context.Post.Include(x => x.Tags).Include(x => x.Comments).ThenInclude(x=>x.User).FirstOrDefaultAsync(p => p.Url == url));
 		}
 	}
 }

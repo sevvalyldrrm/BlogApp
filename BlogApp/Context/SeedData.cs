@@ -5,7 +5,7 @@ namespace BlogApp.Context
 {
 	public class SeedData
 	{
-		public static void TestVerileriniDoldur(IApplicationBuilder app)
+        public static void TestVerileriniDoldur(IApplicationBuilder app)
 		{
 			var context = app.ApplicationServices.CreateScope().ServiceProvider.GetService<DataContext>();
 
@@ -19,11 +19,11 @@ namespace BlogApp.Context
 				if (!context.Tags.Any())
 				{
 					context.Tags.AddRange(
-						new Tag { Text = "Web Programlama", Url = "web-programlama" },
-						new Tag { Text = "Backend", Url = "backend" },
-						new Tag { Text = "Frontend", Url = "frontend" },
-						new Tag { Text = "Fullstack", Url = "fullstack" },
-						new Tag { Text = "PHP", Url = "php" }
+                        new Tag { Text = "Web Programlama", Url = "web-programlama", Color = TagColors.warning},
+						new Tag { Text = "Backend", Url = "backend", Color = TagColors.secondary },
+						new Tag { Text = "Frontend", Url = "frontend", Color = TagColors.success },
+						new Tag { Text = "Fullstack", Url = "fullstack", Color = TagColors.primary },
+						new Tag { Text = "PHP", Url = "php" , Color = TagColors.danger }
 					);
 					context.SaveChanges();
 				}
@@ -55,10 +55,10 @@ namespace BlogApp.Context
 						{
 							Title = "PHP",
 							Content = "PHP Core dersleri",
-							Url = "php-core",
+							Url = "php",
 							IsActive = true,
 							PublishedOn = DateTime.Now.AddDays(-20),
-							Tags = context.Tags.Take(2).ToList(),
+							Tags = context.Tags.Take(1).ToList(),
 							Image = "2.jpg",
 							UserId = 1
 						},
@@ -69,7 +69,7 @@ namespace BlogApp.Context
 							Url = "django",
 							IsActive = true,
 							PublishedOn = DateTime.Now.AddDays(-30),
-							Tags = context.Tags.Take(4).ToList(),
+							Tags = context.Tags.Take(0).ToList(),
 							Image = "3.jpg",
 							UserId = 2
 						},
@@ -80,19 +80,19 @@ namespace BlogApp.Context
 							Url = "angular",
 							IsActive = true,
 							PublishedOn = DateTime.Now.AddDays(-40),
-							Tags = context.Tags.Take(4).ToList(),
-							Image = "3.jpg",
+							Tags = context.Tags.Take(2).ToList(),
+							Image = "1.jpg",
 							UserId = 2
 						},
 						new Post
 						{
 							Title = "React Js",
 							Content = "React dersleri",
-							Url = "react",
+							Url = "react-dersleri",
 							IsActive = true,
 							PublishedOn = DateTime.Now.AddDays(-50),
-							Tags = context.Tags.Take(4).ToList(),
-							Image = "3.jpg",
+							Tags = context.Tags.Take(3).ToList(),
+							Image = "2.jpg",
 							UserId = 2
 						},
 						new Post
@@ -102,7 +102,7 @@ namespace BlogApp.Context
 							Url = "web-tasarim",
 							IsActive = true,
 							PublishedOn = DateTime.Now.AddDays(-60),
-							Tags = context.Tags.Take(4).ToList(),
+							Tags = context.Tags.Take(1).ToList(),
 							Image = "3.jpg",
 							UserId = 2
 						}

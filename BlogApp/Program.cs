@@ -31,6 +31,21 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
+//localhost://posts/react-dersleri
+
+app.MapControllerRoute(
+	name: "post_details",
+	pattern: "posts/{url}",
+	defaults: new {controller = "Post", action="Details"}
+);
+
+app.MapControllerRoute(
+	name: "post_by_tag",
+	pattern: "posts/tag/{tag}",
+	defaults: new {controller = "Post", action="Index"}
+);
+
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Post}/{action=Index}/{id?}");

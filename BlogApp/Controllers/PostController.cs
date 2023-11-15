@@ -1,4 +1,5 @@
 ﻿using BlogApp.Context;
+using BlogApp.Entity;
 using BlogApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,20 +15,29 @@ namespace BlogApp.Controllers
 			_context = context;
 		}
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index (string tag)
 		{
+
+			var posts = _context.Set<Post>().AsQueryable();
+
+			if (!string.IsNullOrEmpty(tag))
+			{
+                posts = posts.Where(p => p.Tags.Any(t => t.Url == tag));
+            }
+
 			return View(
 				new PostViewModel
 				{
-					Posts = _context.Post.ToList(),
+					Posts = await posts.ToListAsync(),
 					//Tags = _context.Tags.ToList()
 				}
 			);
+
 		}
 
-		public async Task<IActionResult> Details(int? id)
+		public async Task<IActionResult> Details(string url)
 		{
-			return View(await _context.Post.FirstOrDefaultAsync(p => p.PostId == id));
+			return View(await _context.Post.Include(x => x.Tags).FirstOrDefaultAsync(p => p.Url == url));
 		}
 	}
 }

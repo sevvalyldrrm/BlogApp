@@ -15,7 +15,7 @@ namespace BlogApp.ViewComponents
 
 		public async Task<IViewComponentResult> InvokeAsync()
 		{
-			return View(await _context.Tags.ToListAsync());
+			return View(await _context.Tags.ToListAsync()); //Select * From 
 		}
 	}
 }

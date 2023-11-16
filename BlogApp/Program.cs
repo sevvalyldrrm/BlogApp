@@ -36,7 +36,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "post_details",
-	pattern: "posts/{url}",
+	pattern: "posts/details/{url}",
 	defaults: new {controller = "Post", action="Details"}
 );
 
@@ -44,6 +44,12 @@ app.MapControllerRoute(
 	name: "post_by_tag",
 	pattern: "posts/tag/{tag}",
 	defaults: new {controller = "Post", action="Index"}
+);
+
+app.MapControllerRoute(
+		name: "AddComment",
+		pattern: "posts/AddComment",
+		defaults: new { controller = "Post", action = "AddComment" }
 );
 
 app.MapControllerRoute(

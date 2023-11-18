@@ -51,8 +51,8 @@ namespace BlogApp.Context
 							Image = "1.jpg",
 							UserId = 1,
 							Comments = new List<Comment> { 
-								new Comment { Text = "iyi bir kurs" , PublishedOn = new DateTime(), UserId = 1}, 
-								new Comment { Text = "çok faydasını gördüğüm bir kurs" , PublishedOn = new DateTime(), UserId = 2},
+								new Comment { Text = "iyi bir kurs" , PublishedOn =  DateTime.Now.AddDays(-20), UserId = 1}, 
+								new Comment { Text = "çok faydasını gördüğüm bir kurs" , PublishedOn =  DateTime.Now.AddDays(-10), UserId = 2},
 							}
 						},
 						new Post

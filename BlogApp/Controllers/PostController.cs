@@ -40,7 +40,7 @@ namespace BlogApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddComment(int PostId, string UserName, string Text, string Url)
+        public JsonResult AddComment(int PostId, string UserName, string Text)
         {
             var entity = new Comment
             {
@@ -52,7 +52,14 @@ namespace BlogApp.Controllers
             _context.Add(entity);
             _context.SaveChanges();
 
-            return Redirect("/posts/details/" + Url);
+            //return Redirect("/posts/details/" + Url);
+
+            return Json( new{
+                UserName,
+                Text,
+                entity.PublishedOn,
+                entity.User.Image
+            });
         }
     }
 }

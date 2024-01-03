@@ -31,8 +31,8 @@ namespace BlogApp.Context
 				if (!context.Users.Any())
 				{
 					context.Users.AddRange(
-						new User { UserName = "sevvalyldrm", Image ="p1.jpg" },
-						new User { UserName = "ahmetyilmaz", Image ="p2.jpg" }
+						new User { UserName = "sevvalyldrm", Name= "Şevval Yıldırım", Email= "info@sevvalyldrm.com", Password="123" ,Image ="p1.jpg" },
+						new User { UserName = "ahmetyilmaz", Name = "Ahmet Yılmaz", Email = "info@ahmetylmz.com", Password = "123", Image ="p2.jpg" }
 					);
 					context.SaveChanges();
 				}

@@ -1,4 +1,5 @@
 using BlogApp.Context;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,11 @@ builder.Services.AddDbContext<BlogApp.Context.DataContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("DBConStr"));
 });
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+
 var app = builder.Build();
+
+
 
 SeedData.TestVerileriniDoldur(app);
 
@@ -28,9 +33,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
-
 
 //localhost://posts/react-dersleri
 

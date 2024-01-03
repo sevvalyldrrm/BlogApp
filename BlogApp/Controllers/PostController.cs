@@ -3,6 +3,7 @@ using BlogApp.Entity;
 using BlogApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace BlogApp.Controllers
 {
@@ -17,6 +18,7 @@ namespace BlogApp.Controllers
 
         public async Task<IActionResult> Index(string tag)
         {
+            //var claims = User.Claims;
 
             var posts = _context.Set<Post>().AsQueryable();
 
@@ -40,14 +42,18 @@ namespace BlogApp.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddComment(int PostId, string UserName, string Text)
+        public JsonResult AddComment(int PostId, string Text)
         {
-            var entity = new Comment
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var username = User.FindFirstValue(ClaimTypes.Name);
+            var avatar = User.FindFirstValue(ClaimTypes.UserData);
+
+			var entity = new Comment
             {
+                PostId = PostId,
                 Text = Text,
                 PublishedOn = DateTime.Now,
-                PostId = PostId,
-                User = new User { UserName = UserName, Image="avatar.jpg" },
+                UserId = int.Parse(userId ?? "")
             };
             _context.Add(entity);
             _context.SaveChanges();
@@ -55,10 +61,10 @@ namespace BlogApp.Controllers
             //return Redirect("/posts/details/" + Url);
 
             return Json( new{
-                UserName,
+				username,
                 Text,
                 entity.PublishedOn,
-                entity.User.Image
+                avatar
             });
         }
     }

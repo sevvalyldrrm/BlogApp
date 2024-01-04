@@ -43,6 +43,7 @@ namespace BlogApp.Context
 						new Post
 						{
 							Title = "Asp.net Core",
+							Description = "Asp.net Core dersleri",
 							Content = "Asp.net Core dersleri",
 							Url = "aspnet-core",
 							IsActive = true,
@@ -58,6 +59,7 @@ namespace BlogApp.Context
 						new Post
 						{
 							Title = "PHP",
+							Description = "PHP Core dersleri",
 							Content = "PHP Core dersleri",
 							Url = "php",
 							IsActive = true,
@@ -69,6 +71,7 @@ namespace BlogApp.Context
 						new Post
 						{
 							Title = "Django",
+							Description = "Django dersleri",
 							Content = "Django dersleri",
 							Url = "django",
 							IsActive = true,
@@ -80,6 +83,7 @@ namespace BlogApp.Context
 						new Post
 						{
 							Title = "Angular",
+							Description = "Angular dersleri",
 							Content = "Angular dersleri",
 							Url = "angular",
 							IsActive = true,
@@ -91,6 +95,7 @@ namespace BlogApp.Context
 						new Post
 						{
 							Title = "React Js",
+							Description = "React dersleri",
 							Content = "React dersleri",
 							Url = "react-dersleri",
 							IsActive = true,
@@ -102,6 +107,7 @@ namespace BlogApp.Context
 						new Post
 						{
 							Title = "Web Tasarım",
+							Description = "Web Tasarım dersleri",
 							Content = "Web Tasarım dersleri",
 							Url = "web-tasarim",
 							IsActive = true,

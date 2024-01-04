@@ -13,7 +13,10 @@ builder.Services.AddDbContext<BlogApp.Context.DataContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("DBConStr"));
 });
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+	options.LoginPath = "/User/Login";
+});
 
 var app = builder.Build();
 

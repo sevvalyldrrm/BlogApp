@@ -27,6 +27,37 @@ namespace BlogApp.Controllers
             return View();
         }
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(x=> x.Email == model.Email || x.UserName == model.UserName);
+                if (user == null)
+                {
+                    _context.Users.Add(new User
+                    {
+                        UserName = model.UserName,
+                        Name = model.Email,
+                        Email = model.Email,
+                        Password = model.Password,
+                        Image = "avatar.jpg"
+                    }); 
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Login");
+                } else
+                {
+                    ModelState.AddModelError("", "Bu Kullanıcı Adı veya Eposta  kullanışmış.");
+                }
+            }
+            return View(model);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {

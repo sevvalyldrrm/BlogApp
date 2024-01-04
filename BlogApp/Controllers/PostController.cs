@@ -1,9 +1,13 @@
 ﻿using BlogApp.Context;
 using BlogApp.Entity;
 using BlogApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Claims;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace BlogApp.Controllers
 {
@@ -66,6 +70,102 @@ namespace BlogApp.Controllers
                 entity.PublishedOn,
                 avatar
             });
+        }
+
+        [Authorize]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(PostCreateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+				var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+				var post = new Post
+				{
+					Title = model.Title,
+                    Content = model.Content,
+                    Description = model.Description,
+                    Url = model.Url,
+					PublishedOn = DateTime.Now,
+					UserId = int.Parse(userId ?? ""),
+                    Image = "1.jpg",
+                    IsActive = false
+				};
+				_context.Add(post);
+				_context.SaveChanges();
+                
+                return RedirectToAction(nameof(Index));
+			}
+            return View(model);
+        }
+
+        [Authorize]
+        public async Task<IActionResult> List()
+        {
+			var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "");
+			var role = User.FindFirstValue(ClaimTypes.Role);
+
+
+			var posts = _context.Set<Post>().AsQueryable();
+
+            if (string.IsNullOrEmpty(role))
+            {
+                posts = posts.Where(x => x.UserId == userId);
+            }
+			return View(await posts.ToListAsync());
+        }
+
+        [Authorize]
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var post = _context.Post.FirstOrDefault(i=> i.PostId == id);
+            if(post == null)
+            {
+                return NotFound();
+            }
+
+            return View(new PostCreateViewModel
+            {
+                PostId = post.PostId,
+                Title = post.Title,
+                Description = post.Description,
+                Content = post.Content,
+                Url = post.Url,
+                IsActive = post.IsActive
+            });
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Edit(PostCreateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var entityToUpdate = new Post
+                {
+                    PostId = model.PostId,
+                    Title = model.Title,
+                    Description = model.Description,
+                    Content = model.Content,
+                    Url = model.Url,
+					IsActive = model.IsActive
+				};
+                _context.Update(entityToUpdate);
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(List));
+
+            }
+            return View(model);
         }
     }
 }

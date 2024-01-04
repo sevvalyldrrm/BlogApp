@@ -24,12 +24,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/SEVVAL/Desktop/Kurs/BlogApp/BlogApp/Views/Post/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/SEVVAL/Desktop/Kurs/BlogApp/BlogApp/Views/Post/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/SEVVAL/Desktop/Kurs/BlogApp/BlogApp/Views/Post/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/SEVVAL/Desktop/Kurs/BlogApp/BlogApp/Views/Post/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SEVVAL/Desktop/Kurs/BlogApp/BlogApp/Views/Post/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/SEVVAL/Desktop/Kurs/BlogApp/BlogApp/Views/Shared/Components/PostMenu/Default.cshtml]
@@ -50,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/SEVVAL/Desktop/Kurs/BlogApp/BlogApp/Views/User/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/SEVVAL/Desktop/Kurs/BlogApp/BlogApp/Views/User/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/SEVVAL/Desktop/Kurs/BlogApp/BlogApp/Views/_ViewImports.cshtml]

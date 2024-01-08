@@ -51,6 +51,7 @@ namespace BlogApp.Controllers
 			var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 			var username = User.FindFirstValue(ClaimTypes.Name);
 			var avatar = User.FindFirstValue(ClaimTypes.UserData);
+			var name = User.FindFirstValue(ClaimTypes.GivenName);
 
 			var entity = new Comment
 			{
@@ -66,6 +67,7 @@ namespace BlogApp.Controllers
 
 			return Json(new
 			{
+				name,
 				username,
 				Text,
 				entity.PublishedOn,

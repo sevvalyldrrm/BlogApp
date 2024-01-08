@@ -44,7 +44,7 @@
 									<div class="mb-2 d-flex">
 										<h6 class="me-2">
 											<a href="/profile/@comment.User.UserName">
-												@comment.User.UserName
+												@comment.User.Name
 											</a>
 										</h6>
 										<small>@comment.PublishedOn.ToString("G")</small>
@@ -108,6 +108,7 @@
 						//action'daki parametre isimleri - id isimleri
 						PostId: $('#PostId').val(),
 						UserName: $('#UserName').val(),
+						Name: $('#Name').val(),
 						Text: $('#Text').val(),
 					},
 					success: function (yorum) {
@@ -119,7 +120,7 @@
 														<img style="width: 100px; height:100px" src="/img/${yorum.avatar}" class="avatar rounded-circle float-start me-3" />
 														<div>
 															<div class="mb-2 d-flex">
-																<h6 class="me-2">${yorum.username}</h6>
+																		<h6 class="me-2"><a href="/user/profile">${yorum.name}</a></h6>
 																<small>${date.toLocaleDateString()}</small>
 															</div>
 															<p>${yorum.text}</p>
@@ -128,6 +129,7 @@
 												`);
 						$("#UserName").val('');
 						$("#Text").val('');
+						$("#Name").val('');
 
 						var adet = parseInt($('#commentCount').text());
 						$('#commentCount').text(adet + 1);

@@ -1,7 +1,12 @@
-﻿namespace BlogApp.Entity
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace BlogApp.Entity
 {
 	public class Post
 	{
+		[Key]
+
 		public int PostId { get; set; }
 
 		public string? Title { get; set; }
